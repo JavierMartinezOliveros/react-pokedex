@@ -1,0 +1,47 @@
+@import '../../index.scss';
+
+.card {
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  height: 108px;
+  margin-bottom: 8px;
+  position: relative;
+  width: 104px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: $graybg;
+    border-radius: 7px;
+    bottom: 0;
+    height: 44px;
+    right: 0;
+    width: 100%;
+  }
+
+  &-number {
+    color: $graymedium;
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    top: 4px;
+  }
+
+  &-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  &-image {
+    height: 72px;
+    margin-top: 16px;
+  }
+
+  &-name {
+    color: $graydark;
+    font-size: 10px;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,363 @@
+@import '../../index.scss';
+
+header {
+  padding: 12px;
+
+  h1 {
+    color: $white;
+    margin: 0 0 0 16px;
+  }
+}
+
+.pokedex {
+  margin: 0 auto;
+  padding: 4px;
+  width: 360px;
+
+  &-home {
+    background: $primary;
+  }
+
+  &-header {
+    display: flex;
+    padding: 0 0 12px 0;
+  }
+
+  &-search {
+    display: flex;
+    width: 100%;
+
+    input {
+      background: $white;
+      border-radius: 16px;
+      box-shadow: inset 0px 1px 3px rgba(#000000, 0.75);
+      color: $graydark;
+      outline: none;
+      padding: 8px 12px 8px 16px;
+      position: relative;
+      width: 280px;
+      -webkit-appearance: none;
+
+      &:focus-within {
+        box-shadow: 2px 3px 5px 0 rgba(#000000, 0.25);
+        
+      }
+    }
+  }
+
+  &-content {
+    background: $white;
+    border-radius: 8px;
+    box-shadow: inset 0px 1px 3px rgba(#000000, 0.75);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 24px 12px;
+  }
+
+  &.grass {
+    background: $grass;
+
+    h2, 
+    .stat-bar p {
+      color: $grass;
+    }
+
+    .progress-bar {
+      background: rgba($grass, .25);
+
+      .filler {
+        background: $grass;
+      }
+    }
+  }
+
+  &.bug {
+    background: $bug;
+
+    h2,
+    .stat-bar p {
+      color: $bug;
+    }
+
+    .progress-bar {
+      background: rgba($bug, .25);
+
+      .filler {
+        background: $bug;
+      }
+    }
+  }
+
+  &.dark {
+    background: $dark;
+
+    h2,
+    .stat-bar p {
+      color: $dark;
+    }
+
+    .progress-bar {
+      background: rgba($dark, .25);
+
+      .filler {
+        background: $dark;
+      }
+    }
+  }
+
+  &.dragon {
+    background: $dragon;
+
+    h2, 
+    .stat-bar p {
+      color: $dragon;
+    }
+
+    .progress-bar {
+      background: rgba($dragon, .25);
+
+      .filler {
+        background: $dragon;
+      }
+    }
+  }
+
+  &.electric {
+    background: $electric;
+
+    h2,
+    .stat-bar p {
+      color: $electric;
+    }
+
+    .progress-bar {
+      background: rgba($electric, .25);
+
+      .filler {
+        background: $electric;
+      }
+    }
+  }
+
+  &.fairy {
+    background: $fairy;
+
+    h2,
+    .stat-bar p {
+      color: $fairy;
+    }
+
+    .progress-bar {
+      background: rgba($fairy, .25);
+
+      .filler {
+        background: $fairy;
+      }
+    }
+  }
+
+  &.fighting {
+    background: $fighting;
+
+    h2,
+    .stat-bar p {
+      color: $fighting;
+    }
+
+    .progress-bar {
+      background: rgba($fighting, .25);
+
+      .filler {
+        background: $fighting;
+      }
+    }
+  }
+
+  &.fire {
+    background: $fire;
+
+    h2,
+    .stat-bar p {
+      color: $fire;
+    }
+
+    .progress-bar {
+      background: rgba($fire, .25);
+
+      .filler {
+        background: $fire;
+      }
+    }
+  }
+
+  &.flying {
+    background: $flying;
+
+    h2,
+    .stat-bar p {
+      color: $flying;
+    }
+
+    .progress-bar {
+      background: rgba($flying, .25);
+
+      .filler {
+        background: $flying;
+      }
+    }
+  }
+
+  &.ghost {
+    background: $ghost;
+
+    h2,
+    .stat-bar p {
+      color: $ghost;
+    }
+
+    .progress-bar {
+      background: rgba($ghost, .25);
+
+      .filler {
+        background: $ghost;
+      }
+    }
+  }
+
+  &.normal {
+    background: $normal;
+
+    h2,
+    .stat-bar p {
+      color: $normal;
+    }
+
+    .progress-bar {
+      background: rgba($normal, .25);
+
+      .filler {
+        background: $normal;
+      }
+    }
+  }
+
+  &.ground {
+    background: $ground;
+
+    h2,
+    .stat-bar p {
+      color: $ground;
+    }
+
+    .progress-bar {
+      background: rgba($ground, .25);
+
+      .filler {
+        background: $ground;
+      }
+    }
+  }
+
+  &.ice {
+    background: $ice;
+
+    h2,
+    .stat-bar p {
+      color: $ice;
+    }
+
+    .progress-bar {
+      background: rgba($ice, .25);
+
+      .filler {
+        background: $ice;
+      }
+    }
+  }
+
+  &.poison {
+    background: $poison;
+
+    h2,
+    .stat-bar p {
+      color: $poison;
+    }
+
+    .progress-bar {
+      background: rgba($poison, .25);
+
+      .filler {
+        background: $poison;
+      }
+    }
+  }
+
+  &.psychic {
+    background: $psychic;
+
+    h2,
+    .stat-bar p {
+      color: $psychic;
+    }
+
+    .progress-bar {
+      background: rgba($psychic, .25);
+
+      .filler {
+        background: $psychic;
+      }
+    }
+  }
+
+  &.rock {
+    background: $rock;
+
+    h2,
+    .stat-bar p {
+      color: $rock;
+    }
+
+    .progress-bar {
+      background: rgba($rock, .25);
+
+      .filler {
+        background: $rock;
+      }
+    }
+  }
+
+  &.steel {
+    background: $steel;
+
+    h2,
+    .stat-bar p {
+      color: $steel;
+    }
+
+    .progress-bar {
+      background: rgba($steel, .25);
+
+      .filler {
+        background: $steel;
+      }
+    }
+  }
+
+  &.water {
+    background: $water;
+
+    h2,
+    .stat-bar p {
+      color: $water;
+    }
+
+    .progress-bar {
+      background: rgba($water, .25);
+
+      .filler {
+        background: $water;
+      }
+    }
+  }
+}

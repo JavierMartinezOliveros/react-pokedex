@@ -1,0 +1,195 @@
+@import '../../index.scss';
+
+.detail {
+  &-header {
+    background: url('../../assets/pokeball.png')center right no-repeat;
+    color: $white;
+    height: 200px;
+    padding: 20px 20px 0  20px;
+    position: relative;
+
+    h1 {
+      line-height: normal;
+      margin: 0 0 0 8px;
+    }
+  }
+
+  &-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-nav {
+    display: flex;
+  }
+
+  &-number {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &-image {
+    height: 200px;
+    left: 50%;
+    position: absolute;
+    top: 76px;
+    transform: translate(-50%, 0);
+    z-index: 1;
+  }
+
+  &-content {
+    background: $white;
+    border-radius: 8px;
+    box-shadow: inset 0px 1px 3px rgba(#000000, 0.75);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 12px;
+    position: relative;
+
+    h2 {
+      font-size: 16px;
+      margin: 16px auto;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  &-type {
+    color: $white;
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+    width: 100%;
+    
+    span {
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      height: 20px;
+      line-height: 2;
+      margin: 0 4px 0;
+      padding: 0 8px;
+    }
+
+    &__grass {
+      background: $grass;
+    }
+  
+    &__bug {
+      background: $bug;
+    }
+  
+    &__dark {
+      background: $dark;
+    }
+  
+    &__dragon {
+      background: $dragon;
+    }
+  
+    &__electric {
+      background: $electric;
+    }
+  
+    &__fairy {
+      background: $fairy;
+    }
+  
+    &__fighting {
+      background: $fighting;
+    }
+  
+    &__fire {
+      background: $fire;
+    }
+  
+    &__flying {
+      background: $flying;
+    }
+  
+    &__ghost {
+      background: $ghost;
+    }
+  
+    &__normal {
+      background: $normal;
+    }
+  
+    &__ground {
+      background: $ground;
+    }
+  
+    &__ice {
+      background: $ice;
+    }
+  
+    &__poison {
+      background: $poison;
+    }
+  
+    &__psychic {
+      background: $psychic;
+    }
+  
+    &__rock {
+      background: $rock;
+    }
+  
+    &__steel {
+      background: $steel;
+    }
+  
+    &__water {
+      background: $water;
+    }
+  }
+
+  &-about {
+    margin: 0 0 16px 0;
+    width: 100%;
+
+    &-content {
+      display: flex;
+    }
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    &-data {
+      align-items: center;
+      border-right: 1px solid $graylight;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 10px;
+      justify-content: center;
+
+      text-align: center;
+      width: 103px;
+
+      p {
+        display: block;
+        color: $graymedium;
+        font-size: 8px;
+        margin: 4px auto;
+        text-align: center;
+        width: 100%;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  &-description {
+    font-size: 10px;
+  }
+
+  &-base-stats {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+}

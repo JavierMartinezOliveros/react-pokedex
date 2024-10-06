@@ -1,0 +1,40 @@
+@import '../../index.scss';
+
+.stat {
+  &-bar {
+    display: flex;
+    width: 100%;
+
+    p {
+      font-size: 10px;
+      font-weight: 700;
+      text-align: right;
+      width: 30px;
+  
+      span {
+        color: $graydark;
+        font-weight: 400;
+      }
+    }
+  
+    .progress-bar {
+      border-radius: 4px;
+      height: 4px;
+      margin: 0 0 0 8px;
+      overflow: hidden;
+      width: 100%; 
+  
+      .filler {
+        height: 100%;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+
+  &-data {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+
+}
