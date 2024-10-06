@@ -15,9 +15,11 @@ interface DetailProps {
   moves: string[];
   description: string;
   stats: { name: string; value: number }[];
+  onNext: () => void; 
+  onPrevious: () => void;
 }
 
-export const Detail = ({ name, number, image, types, height, weight, moves, description, stats }: DetailProps) => {
+export const Detail = ({ name, number, image, types, height, weight, moves, description, stats, onNext, onPrevious }: DetailProps) => {
   const navigate = useNavigate();
 
   const capitalizeFirstLetter = (name: string) => {
@@ -42,6 +44,20 @@ export const Detail = ({ name, number, image, types, height, weight, moves, desc
           <p className='detail-number'># {formattedNumber}</p>
         </div>
         <img className='detail-image' src={image} alt={name} />
+        
+        <button 
+          className="detail-navigation-left" 
+          onClick={onPrevious}
+        >
+          <img src="/public/arrow-left.png" />
+        </button>
+        <button 
+          className="detail-navigation-right" 
+          onClick={onNext}
+        >
+          <img src="/public/arrow-right.png" />
+        </button>
+      
       </div>
       <div className='detail-content'>
         <div className='detail-type'>

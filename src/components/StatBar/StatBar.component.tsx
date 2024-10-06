@@ -1,4 +1,4 @@
-import './statbar.styles.scss'; // Importa tus estilos
+import './statbar.styles.scss';
 
 interface StatBarProps {
   name: string;
@@ -21,4 +21,3 @@ export const StatBar = ({ name, value, maxValue = 200 }:StatBarProps) => {
     </div>
   );
 };
-

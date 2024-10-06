@@ -1,6 +1,25 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { Detail } from '../../components/Detail/Detail.component';
+
+interface PokemonType {
+  pokemon_v2_type: {
+    name: string;
+  };
+}
+
+interface PokemonAbility {
+  pokemon_v2_ability: {
+    name: string;
+  };
+}
+
+interface PokemonStat {
+  base_stat: number;
+  pokemon_v2_stat: {
+    name: string;
+  };
+}
 
 const GET_POKEMON_DETAIL = gql`
   query GetPokemonDetail($id: Int!) {
@@ -41,6 +60,7 @@ const GET_POKEMON_DETAIL = gql`
 
 export const PokemonDetailPage = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_POKEMON_DETAIL, {
     variables: { id: parseInt(id || '0', 10) },
@@ -53,9 +73,9 @@ export const PokemonDetailPage = () => {
 
   const firstType = pokemon.pokemon_v2_pokemontypes[0]?.pokemon_v2_type.name || 'unknown';
 
-  const types = pokemon.pokemon_v2_pokemontypes.map((typeEntry: any) => typeEntry.pokemon_v2_type.name);
+  const types = pokemon.pokemon_v2_pokemontypes.map((typeEntry: PokemonType) => typeEntry.pokemon_v2_type.name);
 
-  const moves = pokemon.pokemon_v2_pokemonabilities.map((moveEntry: any) => moveEntry.pokemon_v2_ability.name).join(' ');
+  const moves = pokemon.pokemon_v2_pokemonabilities.map((moveEntry: PokemonAbility) => moveEntry.pokemon_v2_ability.name).join(' ');
  
   const descriptions = pokemon.pokemon_v2_pokemonspecy.pokemon_v2_pokemonspeciesflavortexts;
 
@@ -71,10 +91,23 @@ export const PokemonDetailPage = () => {
     speed: 'spd',
   };
 
-  const stats = pokemon.pokemon_v2_pokemonstats.map((statEntry: any) => ({
+  const stats = pokemon.pokemon_v2_pokemonstats.map((statEntry: PokemonStat) => ({
     name:  statAbbr[statEntry.pokemon_v2_stat.name].toUpperCase() || statEntry.pokemon_v2_stat.name,
     value: statEntry.base_stat,
   }));
+
+  // Funciones para navegar al Pokémon anterior y siguiente
+  const handleNext = () => {
+    const nextId = parseInt(id || '0', 10) + 1;
+    navigate(`/pokemon/${nextId}`);
+  };
+  
+  const handlePrevious = () => {
+    const prevId = parseInt(id || '0', 10) - 1;
+    if (prevId > 0) {
+      navigate(`/pokemon/${prevId}`);
+    }
+  };
 
   return (
     <div className={`pokedex ${firstType}`}>
@@ -88,6 +121,8 @@ export const PokemonDetailPage = () => {
         moves={moves}
         description={flavorText}
         stats={stats}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
       />
     </div>
   );

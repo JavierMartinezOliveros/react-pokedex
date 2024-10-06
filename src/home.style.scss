@@ -1,4 +1,4 @@
-@import '../../index.scss';
+@import './index.scss';
 
 header {
   padding: 12px;
@@ -359,5 +359,15 @@ header {
         background: $water;
       }
     }
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+
+  button {
+    padding: 0 4px;
   }
 }

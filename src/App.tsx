@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { Pokeball } from './assets/pokeball';
 import { Card } from './components/Card/Card.component';
 import { PokemonDetailPage } from './pages/Detail/PokemonDetailPage';
-import './pages/Home/home.style.scss';
+import './home.style.scss';
 
-// Query para obtener los Pokémon con paginación
 const GET_POKEMONS = gql`
   query GetPokemons($limit: Int!, $offset: Int!) {
     pokemon_v2_pokemon(limit: $limit, offset: $offset) {
@@ -17,16 +16,15 @@ const GET_POKEMONS = gql`
 `;
 
 const HomePage = () => {
-  const ITEMS_PER_PAGE = 12; // Cantidad de Pokémon por página
-  const [page, setPage] = useState(0); // Estado para manejar la página actual
+  const ITEMS_PER_PAGE = 12;
+  const [page, setPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchType, setSearchType] = useState<'name' | 'id'>('name');
 
-  // Calcula el `offset` para la query con base en la página actual
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: {
       limit: ITEMS_PER_PAGE,
-      offset: page * ITEMS_PER_PAGE, // Mueve el offset según la página
+      offset: page * ITEMS_PER_PAGE,
     },
   });
 
@@ -35,7 +33,6 @@ const HomePage = () => {
 
   const pokemons = [...data.pokemon_v2_pokemon].sort((a: any, b: any) => a.name.localeCompare(b.name));
 
-  // Filtro de Pokémon según el término de búsqueda y tipo (nombre o id)
   const filteredPokemons = pokemons.filter((pokemon: any) => {
     if (searchType === 'name') {
       return pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -45,7 +42,6 @@ const HomePage = () => {
     return true;
   });
 
-  // Funciones para manejar la navegación entre páginas
   const handleNextPage = () => setPage(page + 1);
   const handlePrevPage = () => setPage(page > 0 ? page - 1 : 0);
 
@@ -84,12 +80,20 @@ const HomePage = () => {
         ))}
       </div>
 
-      <div className="pagination">
-        <button onClick={handlePrevPage} disabled={page === 0}>
-          Previous
+      <div className="navigation">
+        <button 
+          className="navigation-left" 
+          onClick={handlePrevPage}
+          disabled={page === 0}
+        >
+          <img src="/public/arrow-left.png" />
         </button>
-        <button onClick={handleNextPage} disabled={pokemons.length < ITEMS_PER_PAGE}>
-          Next
+        <button 
+          className="navigation-right" 
+          onClick={handleNextPage}
+          disabled={pokemons.length < ITEMS_PER_PAGE}
+        >
+          <img src="/public/arrow-right.png" />
         </button>
       </div>
     </div>
@@ -101,7 +105,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/pokemon/:id" element={<PokemonDetailPage />} /> {/* Ruta para detalle */}
+        <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
       </Routes>
     </Router>
   );
