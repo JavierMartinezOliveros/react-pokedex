@@ -27,13 +27,14 @@ header {
     display: flex;
     width: 100%;
 
-    input {
-      background: $white;
+    input[type=search] {
+      background: url('/public/search-icon.png') no-repeat $white;
+      background-position: 10px center;
       border-radius: 16px;
       box-shadow: inset 0px 1px 3px rgba(#000000, 0.75);
       color: $graydark;
       outline: none;
-      padding: 8px 12px 8px 16px;
+      padding: 8px 12px 8px 24px;
       position: relative;
       width: 280px;
       -webkit-appearance: none;
@@ -52,6 +53,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    min-height: 512px;
     padding: 24px 12px;
   }
 

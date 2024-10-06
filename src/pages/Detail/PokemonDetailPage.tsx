@@ -81,7 +81,6 @@ export const PokemonDetailPage = () => {
 
   const flavorText = descriptions.length > 0 ? descriptions[0].flavor_text : 'No description available';
 
-  //passing stats to abreviated stats
   const statAbbr: { [key: string]: string } = {
     hp: 'hp',
     attack: 'atk',
@@ -96,7 +95,6 @@ export const PokemonDetailPage = () => {
     value: statEntry.base_stat,
   }));
 
-  // Funciones para navegar al Pokémon anterior y siguiente
   const handleNext = () => {
     const nextId = parseInt(id || '0', 10) + 1;
     navigate(`/pokemon/${nextId}`);

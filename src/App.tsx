@@ -6,9 +6,14 @@ import { Card } from './components/Card/Card.component';
 import { PokemonDetailPage } from './pages/Detail/PokemonDetailPage';
 import './home.style.scss';
 
+interface Pokemon {
+  id: number;
+  name: string;
+}
+
 const GET_POKEMONS = gql`
-  query GetPokemons($limit: Int!, $offset: Int!) {
-    pokemon_v2_pokemon(limit: $limit, offset: $offset) {
+  query GetPokemons {
+    pokemon_v2_pokemon(order_by: { name: asc }) {
       id
       name
     }
@@ -19,28 +24,19 @@ const HomePage = () => {
   const ITEMS_PER_PAGE = 12;
   const [page, setPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchType, setSearchType] = useState<'name' | 'id'>('name');
 
-  const { loading, error, data } = useQuery(GET_POKEMONS, {
-    variables: {
-      limit: ITEMS_PER_PAGE,
-      offset: page * ITEMS_PER_PAGE,
-    },
-  });
+  const { loading, error, data } = useQuery(GET_POKEMONS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const pokemons = [...data.pokemon_v2_pokemon].sort((a: any, b: any) => a.name.localeCompare(b.name));
+  const pokemons = data.pokemon_v2_pokemon;
 
-  const filteredPokemons = pokemons.filter((pokemon: any) => {
-    if (searchType === 'name') {
-      return pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
-    } else if (searchType === 'id') {
-      return pokemon.id.toString().includes(searchTerm);
-    }
-    return true;
-  });
+  const filteredPokemons = pokemons.filter((pokemon: Pokemon) =>
+    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const paginatedPokemons = filteredPokemons.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
 
   const handleNextPage = () => setPage(page + 1);
   const handlePrevPage = () => setPage(page > 0 ? page - 1 : 0);
@@ -55,27 +51,20 @@ const HomePage = () => {
         <div className="pokedex-search">
           <input
             type="search"
-            placeholder={`Search by ${searchType}`}
+            placeholder="Search by name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button
-            className="search-type-toggle"
-            onClick={() => setSearchType(searchType === 'name' ? 'id' : 'name')}
-          >
-            Search by {searchType === 'name' ? 'ID' : 'Name'}
-          </button>
         </div>
       </header>
 
       <div className="pokedex-content">
-        {filteredPokemons.map((pokemon: any) => (
+        {paginatedPokemons.map((pokemon: Pokemon) => (
           <Card
             key={pokemon.id}
             number={pokemon.id}
             name={pokemon.name}
             image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
-            onClick={() => window.location.href = `/pokemon/${pokemon.id}`}
           />
         ))}
       </div>
@@ -91,7 +80,7 @@ const HomePage = () => {
         <button 
           className="navigation-right" 
           onClick={handleNextPage}
-          disabled={pokemons.length < ITEMS_PER_PAGE}
+          disabled={paginatedPokemons.length < ITEMS_PER_PAGE}
         >
           <img src="/public/arrow-right.png" />
         </button>
