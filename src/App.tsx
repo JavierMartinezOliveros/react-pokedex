@@ -4,7 +4,7 @@ import { HomePage } from './pages/Home/HomePage';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/react-pokedex">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
