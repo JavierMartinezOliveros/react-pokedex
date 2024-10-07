@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { Detail } from '../../components/Detail/Detail.component';
+import { getPokemonImageUrl } from '../../components/Utils/pokemonImage';
 
 interface PokemonType {
   pokemon_v2_type: {
@@ -112,7 +113,7 @@ export const PokemonDetailPage = () => {
       <Detail
         name={pokemon.name}
         number={pokemon.id}
-        image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+        image={getPokemonImageUrl(pokemon.id)}
         height={pokemon.height}
         weight={pokemon.weight}
         types={types}
