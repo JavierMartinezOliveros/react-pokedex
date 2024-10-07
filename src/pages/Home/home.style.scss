@@ -52,6 +52,7 @@ header {
     box-shadow: inset 0px 1px 3px rgba(#000000, 0.75);
     display: flex;
     flex-wrap: wrap;
+    height: calc(100% - 180px);
     justify-content: space-between;
     min-height: 512px;
     padding: 24px 12px;
@@ -371,5 +372,12 @@ header {
 
   button {
     padding: 0 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .pokedex {
+    height: 100vh;
+    width: calc(100% - 8px);
   }
 }
