@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "yarn build",
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
@@ -33,5 +33,5 @@
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8"
   },
-  "homepage": "https://git@github.com:JavierMartinezOliveros/react-pokedex.git"
+  "homepage": "https://JavierMartinezOliveros.github.io/react-pokedex"
 }
