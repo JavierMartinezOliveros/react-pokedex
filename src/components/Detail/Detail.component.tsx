@@ -49,13 +49,13 @@ export const Detail = ({ name, number, image, types, height, weight, moves, desc
           className="detail-navigation-left" 
           onClick={onPrevious}
         >
-          <img src="/public/arrow-left.png" />
+          <img src="/react-pokedex/arrow-left.png" />
         </button>
         <button 
           className="detail-navigation-right" 
           onClick={onNext}
         >
-          <img src="/public/arrow-right.png" />
+          <img src="/react-pokedex/arrow-right.png" />
         </button>
       
       </div>

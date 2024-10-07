@@ -57,14 +57,14 @@ export const HomePage = () => {
           onClick={handlePrevPage}
           disabled={page === 0}
         >
-          <img src="/public/arrow-left.png" />
+          <img src="/react-pokedex/arrow-left.png" />
         </button>
         <button 
           className="navigation-right" 
           onClick={handleNextPage}
           disabled={paginatedPokemons?.length < ITEMS_PER_PAGE}
         >
-          <img src="/public/arrow-right.png" />
+          <img src="/react-pokedex/arrow-right.png" />
         </button>
       </div>
     </div>
